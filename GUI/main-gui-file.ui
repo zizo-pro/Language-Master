@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>333</width>
+    <width>440</width>
     <height>300</height>
    </rect>
   </property>
@@ -19,26 +19,399 @@
   <widget class="QComboBox" name="comboBox">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>80</x>
      <y>20</y>
-     <width>231</width>
-     <height>22</height>
+     <width>230</width>
+     <height>25</height>
     </rect>
    </property>
+   <property name="frame">
+    <bool>true</bool>
+   </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="search_BT">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>60</y>
-     <width>75</width>
-     <height>23</height>
+     <x>315</x>
+     <y>20</y>
+     <width>30</width>
+     <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">padding:0
+</string>
    </property>
    <property name="text">
     <string>🔎</string>
    </property>
   </widget>
+  <widget class="QLabel" name="word_LB">
+   <property name="geometry">
+    <rect>
+     <x>15</x>
+     <y>54</y>
+     <width>71</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>13</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(29, 233, 182);
+font: 13pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Word :</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="word_DB">
+   <property name="geometry">
+    <rect>
+     <x>15</x>
+     <y>72</y>
+     <width>210</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/*padding-left : 8px;*/
+color:white;
+background-color: rgb(35, 38, 41);
+font-size: 12pt;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="margin">
+    <number>0</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="meaning_DB">
+   <property name="geometry">
+    <rect>
+     <x>15</x>
+     <y>122</y>
+     <width>210</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/*padding-left : 8px;*/
+color:white;
+background-color: rgb(35, 38, 41);
+font-size: 12pt;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="margin">
+    <number>0</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="meaning_LB">
+   <property name="geometry">
+    <rect>
+     <x>15</x>
+     <y>104</y>
+     <width>71</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>13</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(29, 233, 182);
+font: 13pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Meaning :</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="plural_LB">
+   <property name="geometry">
+    <rect>
+     <x>15</x>
+     <y>154</y>
+     <width>71</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>13</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(29, 233, 182);
+font: 13pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Plural :</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="plural_DB">
+   <property name="geometry">
+    <rect>
+     <x>15</x>
+     <y>172</y>
+     <width>210</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/*padding-left : 8px;*/
+color:white;
+background-color: rgb(35, 38, 41);
+font-size: 12pt;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="margin">
+    <number>0</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="article_LB">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>54</y>
+     <width>71</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>13</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(29, 233, 182);
+font: 13pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Article :</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="article_DB">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>72</y>
+     <width>150</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/*padding-left : 8px;*/
+color:white;
+background-color: rgb(35, 38, 41);
+font-size: 12pt;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="margin">
+    <number>0</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="type_DB">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>122</y>
+     <width>150</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/*padding-left : 8px;*/
+color:white;
+background-color: rgb(35, 38, 41);
+font-size: 12pt;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="margin">
+    <number>0</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="type_LB">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>104</y>
+     <width>71</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>13</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(29, 233, 182);
+font: 13pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Type :</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="speaker_BT">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>20</y>
+     <width>30</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">padding:0
+</string>
+   </property>
+   <property name="text">
+    <string>🔊</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="category_LB">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>154</y>
+     <width>81</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>13</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(29, 233, 182);
+font: 13pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Category :</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="category_DB">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>172</y>
+     <width>150</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/*padding-left : 8px;*/
+color:white;
+background-color: rgb(35, 38, 41);
+font-size: 12pt;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="margin">
+    <number>0</number>
+   </property>
+  </widget>
+  <zorder>comboBox</zorder>
+  <zorder>search_BT</zorder>
+  <zorder>word_DB</zorder>
+  <zorder>word_LB</zorder>
+  <zorder>meaning_DB</zorder>
+  <zorder>meaning_LB</zorder>
+  <zorder>plural_LB</zorder>
+  <zorder>plural_DB</zorder>
+  <zorder>article_LB</zorder>
+  <zorder>article_DB</zorder>
+  <zorder>type_DB</zorder>
+  <zorder>type_LB</zorder>
+  <zorder>speaker_BT</zorder>
+  <zorder>category_LB</zorder>
+  <zorder>category_DB</zorder>
  </widget>
  <resources/>
  <connections/>
