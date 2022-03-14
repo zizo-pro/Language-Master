@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>440</width>
+    <width>445</width>
     <height>300</height>
    </rect>
   </property>
@@ -347,7 +347,7 @@ font: 13pt &quot;MS Shell Dlg 2&quot;;</string>
    <property name="geometry">
     <rect>
      <x>280</x>
-     <y>154</y>
+     <y>153</y>
      <width>81</width>
      <height>20</height>
     </rect>
@@ -397,6 +397,60 @@ font-size: 12pt;</string>
     <number>0</number>
    </property>
   </widget>
+  <widget class="QLabel" name="example_DB">
+   <property name="geometry">
+    <rect>
+     <x>15</x>
+     <y>228</y>
+     <width>415</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/*padding-left : 8px;*/
+color:white;
+background-color: rgb(35, 38, 41);
+font-size: 12pt;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="margin">
+    <number>0</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="example_LB">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>210</y>
+     <width>81</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>13</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(29, 233, 182);
+font: 13pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Example :</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
   <zorder>comboBox</zorder>
   <zorder>search_BT</zorder>
   <zorder>word_DB</zorder>
@@ -412,6 +466,8 @@ font-size: 12pt;</string>
   <zorder>speaker_BT</zorder>
   <zorder>category_LB</zorder>
   <zorder>category_DB</zorder>
+  <zorder>example_DB</zorder>
+  <zorder>example_LB</zorder>
  </widget>
  <resources/>
  <connections/>
