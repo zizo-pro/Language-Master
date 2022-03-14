@@ -1,0 +1,9 @@
+bs4 documentation = "https://beautiful-soup-4.readthedocs.io/en/latest/"
+german-words = "https://www.verbformen.com/declension/"
+
+
+1st Day: create the (searchable Combobox) DONE 
+
+2nd day: create	the (Gui and the table for the word GUI) "--MAIN--" DONE (created the nouns table and the dictinoary is now kind of working perfectly with speech) DONE
+
+3rd day: Lock sizing , Deal with plural in verbs and (ADJ,ADV)
