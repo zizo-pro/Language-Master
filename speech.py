@@ -1,5 +1,6 @@
 from gtts import gTTS
 from playsound import playsound
+from os import remove
 
 def english_lang(text):
 	tts = gTTS(text,lang='en')
@@ -15,4 +16,5 @@ def deutsch_lang(text):
 	tts = gTTS(text,lang='de')
 	tts.save(r"audio/du_audio.mp3")
 	playsound(r"audio/du_audio.mp3")
+	remove(r"audio\du_audio.mp3")
 
