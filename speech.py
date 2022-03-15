@@ -13,8 +13,8 @@ def arabic_lang(text):
 	playsound(r"audio/ar_audio.mp3")
 
 def deutsch_lang(text):
-	tts = gTTS(text,lang='de')
-	tts.save(r"audio/du_audio.mp3")
-	playsound(r"audio/du_audio.mp3")
-	remove(r"audio\du_audio.mp3")
+		tts = gTTS(text,lang='de')
 
+		tts.save(r"/du_audio.du_audio.mp3")
+		playsound(r"/du_audio.du_audio.mp3")
+		remove(r"/du_audio.du_audio.mp3")
