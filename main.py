@@ -20,8 +20,8 @@ class mainapp(QMainWindow,FORM_CLASS):
       QMainWindow.__init__(self)
       self.setupUi(self)
       self.initialize()
-      self.button_setup()
       self.Database()
+      self.button_setup()
   
   def initialize(self):
       self.comboBox.setEditable(True)
@@ -41,11 +41,16 @@ class mainapp(QMainWindow,FORM_CLASS):
       self.search_shortcut = QShortcut("return", self)
   
   def button_setup(self):
-      self.search_BT.clicked.connect(self.search)
+      self.search_BT.clicked.connect(self.know_what)
       self.speaker_BT.clicked.connect(self.speaker)
+  
+  def know_what(self):
+    self.comb = self.comboBox.currentText()
+    if self.comb in self.all:
+      self.search_BT.clicked.connect(self.search)
       self.search_shortcut.activated.connect(self.search)
-
   def first_open(self):
+      
       self.article_DB.hide()
       self.article_LB.hide()
       self.category_DB.hide()
@@ -155,6 +160,7 @@ class mainapp(QMainWindow,FORM_CLASS):
       self.verbs = []
       self.nouns = []
       self.adjectives = []
+      self.all = [""]
 
       self.db = mysql.connector.connect(
         host = "localhost",
@@ -168,34 +174,35 @@ class mainapp(QMainWindow,FORM_CLASS):
       self.combodata = self.cr.fetchall()
       for i in self.combodata:
         self.nouns.append(i[0])
-      
+        self.all.append(i[0])
       self.cr.execute("SELECT verb FROM verbs")
       self.combodata2 = self.cr.fetchall()
       for i in self.combodata2:
         self.verbs.append(i[0])
-
+        self.all.append(i[0])
       self.cr.execute("SELECT adjective FROM adjectives")
       self.combodata3 = self.cr.fetchall()
       for i in self.combodata3:
         self.adjectives.append(i[0])
-
+        self.all.append(i[0])
 
 if __name__ == "__main__":
   app = QApplication(argv)
   MainWindow = QtWidgets.QMainWindow()
   window = mainapp()
-  string_list = [""]
-  for i in window.nouns:
-    string_list.append(i)
+  # string_list = [""]
+  # for i in window.nouns:
+  #   string_list.append(i)
   
-  for i in window.verbs:
-    string_list.append(i)
+  # for i in window.verbs:
+  #   string_list.append(i)
 
-  for i in window.adjectives:
-    string_list.append(i)
+  # for i in window.adjectives:
+  #   string_list.append(i)
+
   apply_stylesheet(app, theme='dark_teal.xml')
   combo = window.comboBox
-  combo.addItems(sorted(string_list))
+  combo.addItems(sorted(window.all))
 
   window.show()
   exit(app.exec_())
