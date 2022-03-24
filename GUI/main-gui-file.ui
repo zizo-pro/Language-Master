@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>445</width>
-    <height>300</height>
+    <height>315</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -451,6 +451,19 @@ font: 13pt &quot;MS Shell Dlg 2&quot;;</string>
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
   </widget>
+  <widget class="QPushButton" name="add_BT">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>270</y>
+     <width>75</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>ADD</string>
+   </property>
+  </widget>
   <zorder>comboBox</zorder>
   <zorder>search_BT</zorder>
   <zorder>word_DB</zorder>
@@ -468,6 +481,7 @@ font: 13pt &quot;MS Shell Dlg 2&quot;;</string>
   <zorder>category_DB</zorder>
   <zorder>example_DB</zorder>
   <zorder>example_LB</zorder>
+  <zorder>add_BT</zorder>
  </widget>
  <resources/>
  <connections/>

@@ -10,7 +10,7 @@ from os import path
 from sys import argv,exit
 from qt_material import apply_stylesheet
 from speech import deutsch_lang
-
+from add import myapp
 
 FORM_CLASS,_=loadUiType(path.join(path.dirname(__file__),"GUI/main-gui-file.ui"))
 
@@ -63,6 +63,7 @@ class mainapp(QMainWindow,FORM_CLASS):
       self.search_BT.clicked.connect(self.check_word)
       self.speaker_BT.clicked.connect(self.speaker)
       self.search_shortcut.activated.connect(self.check_word)
+      self.add_BT.clicked.connect(self.add_db)
 
   def check_word(self):
     self.comb = self.comboBox.currentText()
@@ -82,11 +83,12 @@ class mainapp(QMainWindow,FORM_CLASS):
       self.type_LB.hide()
       self.word_DB.hide()
       self.word_LB.hide()
-      self.setGeometry(200,200,335,75)
-      self.setFixedSize(335,75)
+      self.setGeometry(200,200,335,90)
+      self.setFixedSize(335,90)
       self.comboBox.setGeometry(15,20,230,25)
       self.search_BT.setGeometry(255,20,30,25)
       self.speaker_BT.setGeometry(290,20,30,25)
+      self.add_BT.setGeometry(115,55,75,25)
 
   def search(self):
     self.combotext = self.comboBox.currentText()
@@ -102,11 +104,12 @@ class mainapp(QMainWindow,FORM_CLASS):
     self.type_LB.show()
     self.word_DB.show()
     self.word_LB.show()
-    self.resize(445,300)
-    self.setFixedSize(445,300)
+    self.resize(445,315)
+    self.setFixedSize(445,315)
     self.comboBox.setGeometry(80,20,230,25)
     self.search_BT.setGeometry(315,20,30,25)
     self.speaker_BT.setGeometry(350,20,30,25)
+    self.add_BT.setGeometry(350,270,75,25)
 
     if self.combotext in self.verbs:
       self.word_LB.setText("Verb :")
@@ -159,6 +162,9 @@ class mainapp(QMainWindow,FORM_CLASS):
   def speaker(self):
       deutsch_lang(self.comboBox.currentText())
 
+  def add_db(self):
+    self.add_db_win = myapp()
+    self.add_db_win.show()
 
   def Database(self):
       self.verbs = []
