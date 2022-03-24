@@ -354,26 +354,6 @@ padding-left:4px;</string>
     <number>0</number>
    </property>
   </widget>
-  <widget class="QLineEdit" name="type_input">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>139</y>
-     <width>150</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color:white;
-background-color: rgb(35, 38, 41);
-font-size: 12pt;
-border: 0;
-padding-left:4px;</string>
-   </property>
-   <property name="cursorPosition">
-    <number>0</number>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="category_input">
    <property name="geometry">
     <rect>
