@@ -43,6 +43,7 @@ class myapp(QMainWindow,FORM_CLASS):
         self.article_LB.show()
         self.word_LB.show()
         self.change_labels()
+        self.move_things()
       else:
         print("error")
 
@@ -69,7 +70,7 @@ class myapp(QMainWindow,FORM_CLASS):
         self.category_LB.setText("Neutral :")
         self.type_LB.setText("Type :")
 
-      self.move_things()
+      
 
     def move_things(self):
       self.word_LB.setGeometry(15,29,210,20)

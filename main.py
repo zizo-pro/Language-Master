@@ -204,14 +204,23 @@ class mainapp(QMainWindow,FORM_CLASS):
   def add_DATA(self):
     self.word_typ = self.add_db_win.word_type.currentText()
     
-    word = self.add_db_win.word_input.text()
-    meaning = self.add_db_win.meaning_input.text()
-    plural = self.add_db_win.plural_input.text()
-    article = self.add_db_win.article_input.text()
-    category = self.add_db_win.category_input.text()
-    example = self.add_db_win.example_input.text()
+    word = self.add_db_win.word_input.text().capitalize()
+    meaning = self.add_db_win.meaning_input.text().capitalize()
+    plural = self.add_db_win.plural_input.text().capitalize()
+    article = self.add_db_win.article_input.text().capitalize()
+    category = self.add_db_win.category_input.text().capitalize()
+    example = self.add_db_win.example_input.text().capitalize()
     if self.word_typ.upper() == "NOUN":
-      cr.execute("INSERT INTO nouns (article,noun,meaning,type,plural,category,example) VALUES (%s,%s,%s,%s,%s,%s,%s)",(article,word,meaning,self.word_typ,plural,category,example))
+      self.cr.execute("INSERT INTO nouns (article,noun,meaning,type,plural,category,example) VALUES (%s,%s,%s,%s,%s,%s,%s)",(article,word,meaning,self.word_typ,plural,category,example))
+      self.nouns.append(word)
+
+    elif self.word_typ.upper() == "VERB":
+      self.cr.execute("INSERT INTO verbs (verb,perfect,meaning,type,status,auxiliary_verb,example) VALUES (%s,%s,%s,%s,%s,%s,%s)",(word,article,meaning,self.word_typ,plural,category,example))
+      self.verbs.append(word)
+
+    elif self.word_typ.upper() == "ADJECTIVE":
+      self.cr.execute("INSERT INTO adjectives (adjective,meaning,male,female,neutral,type,example) VALUES (%s,%s,%s,%s,%s,%s,%s)",(word,meaning,article,plural,category,"Adjective",example))
+
 
     self.add_db_win.word_input.setText("")
     self.add_db_win.meaning_input.setText("")
@@ -219,6 +228,10 @@ class mainapp(QMainWindow,FORM_CLASS):
     self.add_db_win.article_input.setText("")
     self.add_db_win.category_input.setText("")
     self.add_db_win.example_input.setText("")
+    self.db.commit()
+    self.all.append(word)
+    self.comboBox.clear()
+    self.comboBox.addItems(sorted(self.all))
 if __name__ == "__main__":
   app = QApplication(argv)
   MainWindow = QtWidgets.QMainWindow()
