@@ -64,6 +64,7 @@ class mainapp(QMainWindow,FORM_CLASS):
       self.speaker_BT.clicked.connect(self.speaker)
       self.search_shortcut.activated.connect(self.check_word)
       self.add_BT.clicked.connect(self.add_db)
+      
 
   def check_word(self):
     self.comb = self.comboBox.currentText()
@@ -165,6 +166,7 @@ class mainapp(QMainWindow,FORM_CLASS):
   def add_db(self):
     self.add_db_win = myapp()
     self.add_db_win.show()
+    self.add_db_win.add_BT.clicked.connect(self.add_DATA)
 
   def Database(self):
       self.verbs = []
@@ -199,6 +201,24 @@ class mainapp(QMainWindow,FORM_CLASS):
         self.adjectives.append(adjective[0])
         self.all.append(adjective[0])
 
+  def add_DATA(self):
+    self.word_typ = self.add_db_win.word_type.currentText()
+    
+    word = self.add_db_win.word_input.text()
+    meaning = self.add_db_win.meaning_input.text()
+    plural = self.add_db_win.plural_input.text()
+    article = self.add_db_win.article_input.text()
+    category = self.add_db_win.category_input.text()
+    example = self.add_db_win.example_input.text()
+    if self.word_typ.upper() == "NOUN":
+      cr.execute("INSERT INTO nouns (article,noun,meaning,type,plural,category,example) VALUES (%s,%s,%s,%s,%s,%s,%s)",(article,word,meaning,self.word_typ,plural,category,example))
+
+    self.add_db_win.word_input.setText("")
+    self.add_db_win.meaning_input.setText("")
+    self.add_db_win.plural_input.setText("")
+    self.add_db_win.article_input.setText("")
+    self.add_db_win.category_input.setText("")
+    self.add_db_win.example_input.setText("")
 if __name__ == "__main__":
   app = QApplication(argv)
   MainWindow = QtWidgets.QMainWindow()
