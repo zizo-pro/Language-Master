@@ -11,6 +11,7 @@ from sys import argv,exit
 from qt_material import apply_stylesheet
 from speech import deutsch_lang
 from add import myapp
+from Login_win import lol
 
 FORM_CLASS,_=loadUiType(path.join(path.dirname(__file__),"GUI/main-gui-file.ui"))
 
@@ -21,8 +22,15 @@ class mainapp(QMainWindow,FORM_CLASS):
       self.setupUi(self)
       self.initialize()
       self.Database()
-      self.button_setup()
       self.combobox_init()
+      self.firs = lol()
+      self.button_setup()
+
+  def first(self):
+    self.firs.show()
+
+  def open_dict(self):
+    self.show()
 
   def initialize(self):
     self.first_open()
@@ -64,6 +72,7 @@ class mainapp(QMainWindow,FORM_CLASS):
       self.speaker_BT.clicked.connect(self.speaker)
       self.search_shortcut.activated.connect(self.check_word)
       self.add_BT.clicked.connect(self.add_db)
+      self.firs.dict_BT.clicked.connect(self.open_dict)
       
 
   def check_word(self):
@@ -238,9 +247,9 @@ if __name__ == "__main__":
   window = mainapp()
 
   apply_stylesheet(app, theme='dark_teal.xml')
-
+  window.first()
   combo = window.comboBox
   combo.addItems(sorted(window.all))
 
-  window.show()
+  # window.show()
   exit(app.exec_())

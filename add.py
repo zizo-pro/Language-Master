@@ -31,6 +31,8 @@ class myapp(QMainWindow,FORM_CLASS):
       self.proceed_BT.setGeometry(112,50,75,25)
       self.setGeometry(200,200,320,85)
       self.setFixedSize(320,85)
+      self.image_LB.hide()
+      self.imageurl_input.hide()
 
     def proceed(self):
       if self.password.text() == self.admin_password:
@@ -55,6 +57,11 @@ class myapp(QMainWindow,FORM_CLASS):
         self.plural_LB.setText("Status :")
         self.category_LB.setText("Hilfsverb :")
         self.type_LB.setText("Type :")
+        self.image_LB.hide()
+        self.imageurl_input.hide()
+        self.resize(445, 280)
+        self.setFixedSize(445,280)
+        self.add_BT.setGeometry(180,235,75,25)
 
       elif self.wordtyp == "Noun":
         self.word_LB.setText("Word :")
@@ -62,6 +69,11 @@ class myapp(QMainWindow,FORM_CLASS):
         self.plural_LB.setText("Plural :")
         self.category_LB.setText("Category :")
         self.type_LB.setText("Type :")
+        self.image_LB.show()
+        self.imageurl_input.show()
+        self.resize(445, 330)
+        self.setFixedSize(445,330)
+        self.add_BT.setGeometry(180,295,75,25)
 
       elif self.wordtyp == "Adjective":
         self.word_LB.setText("Adjective :")
@@ -69,7 +81,11 @@ class myapp(QMainWindow,FORM_CLASS):
         self.plural_LB.setText("Weiblich :")
         self.category_LB.setText("Neutral :")
         self.type_LB.setText("Type :")
-
+        self.image_LB.hide()
+        self.imageurl_input.hide()
+        self.resize(445, 280)
+        self.setFixedSize(445,280)
+        self.add_BT.setGeometry(180,235,75,25)
       
 
     def move_things(self):

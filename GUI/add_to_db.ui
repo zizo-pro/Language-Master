@@ -407,6 +407,55 @@ padding-left:4px;</string>
     <string>ADD</string>
    </property>
   </widget>
+  <widget class="QLabel" name="image_LB">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>230</y>
+     <width>101</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>13</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(29, 233, 182);
+font: 13pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Image URL :</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="imageurl_input">
+   <property name="geometry">
+    <rect>
+     <x>15</x>
+     <y>254</y>
+     <width>415</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:white;
+background-color: rgb(35, 38, 41);
+font-size: 12pt;
+border: 0;
+padding-left:4px;</string>
+   </property>
+   <property name="cursorPosition">
+    <number>0</number>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
