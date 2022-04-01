@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Language Master</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../IMG/LOGO.png</normaloff>../IMG/LOGO.png</iconset>
   </property>
   <widget class="QPushButton" name="dict_BT">
    <property name="geometry">

@@ -12,6 +12,9 @@ from qt_material import apply_stylesheet
 from speech import deutsch_lang
 from add import myapp
 from Login_win import lol
+from Flash_game import Flash_cards
+from random import randint
+from playsound import playsound
 
 FORM_CLASS,_=loadUiType(path.join(path.dirname(__file__),"GUI/main-gui-file.ui"))
 
@@ -24,6 +27,7 @@ class mainapp(QMainWindow,FORM_CLASS):
       self.Database()
       self.combobox_init()
       self.firs = lol()
+      self.flash = Flash_cards()
       self.button_setup()
 
   def first(self):
@@ -31,6 +35,10 @@ class mainapp(QMainWindow,FORM_CLASS):
 
   def open_dict(self):
     self.show()
+
+  def open_flash(self):
+    self.flash.show()
+    self.flashgame()
 
   def initialize(self):
     self.first_open()
@@ -73,7 +81,8 @@ class mainapp(QMainWindow,FORM_CLASS):
       self.search_shortcut.activated.connect(self.check_word)
       self.add_BT.clicked.connect(self.add_db)
       self.firs.dict_BT.clicked.connect(self.open_dict)
-      
+      self.firs.cards_BT.clicked.connect(self.open_flash)
+      self.flash.check_BT.clicked.connect(self.check)
 
   def check_word(self):
     self.comb = self.comboBox.currentText()
@@ -176,6 +185,71 @@ class mainapp(QMainWindow,FORM_CLASS):
     self.add_db_win = myapp()
     self.add_db_win.show()
     self.add_db_win.add_BT.clicked.connect(self.add_DATA)
+
+  def flashgame(self):
+    self.card = randint(0,len(self.nouns)-1)
+    self.l = self.nouns[self.card]
+    self.card_noun = self.cr.execute(f"SELECT article , img FROM nouns WHERE noun='{self.l}'")
+    self.level = self.cr.fetchone()
+    self.flash.set_img(self.level[1])
+    self.flash.der.setEnabled(True)
+    self.flash.der.setCheckable(True)
+    self.flash.der.setStyleSheet("")
+    self.flash.das.setStyleSheet("")
+    self.flash.die.setStyleSheet("")
+    self.flash.input.setStyleSheet("border: 2px solid rgb(29, 233, 182);font-size:16px;")
+    self.flash.label.setStyleSheet("Border: 2px solid rgb(29, 233, 182); font-size:16px;")
+    self.flash.das.setEnabled(True)
+    self.flash.das.setCheckable(True)
+    self.flash.die.setEnabled(True)
+    self.flash.die.setCheckable(True)
+    self.flash.input.setText("")
+    self.flash.der.setChecked(False)
+    self.flash.das.setChecked(False)
+    self.flash.die.setChecked(False)
+  def check(self):
+    self.art = self.level[0].lower()
+    if self.flash.checked == self.art and self.flash.input.text().upper() == self.l.upper():
+      playsound("audio/Correct.mp3")
+      self.flashgame()
+    elif self.flash.checked != self.art and self.flash.input.text().upper() == self.l.upper():
+      playsound("audio/Wrong.mp3")
+      self.stylesheet = "Border: 2px solid #c40e0e;Background-color: #c40e0e;"
+      self.flash.label.setStyleSheet("Border: 2px solid #c40e0e;")
+      if self.flash.checked == "das":
+        self.flash.das.setCheckable(False)
+        self.flash.das.setEnabled(False)
+        self.flash.das.setStyleSheet(self.stylesheet)
+      elif self.flash.checked == "der":
+        self.flash.der.setCheckable(False)
+        self.flash.der.setEnabled(False)
+        self.flash.der.setStyleSheet(self.stylesheet)
+      elif self.flash.checked == "die":
+        self.flash.die.setEnabled(False)
+        self.flash.die.setCheckable(False)
+        self.flash.die.setStyleSheet(self.stylesheet)
+    elif self.flash.checked == self.art and self.flash.input.text().upper() != self.l.upper():
+      playsound("audio/Wrong.mp3")
+      self.stylesheet = "Border: 2px solid #c40e0e;color: #c40e0e;font-size:16px;"
+      self.flash.input.setStyleSheet(self.stylesheet)
+      self.flash.label.setStyleSheet("Border: 2px solid #c40e0e;")
+    else:
+      playsound("audio/Wrong.mp3")
+      self.stylesheet = "Border: 2px solid #c40e0e;Background-color: #c40e0e;"
+      self.flash.input.setStyleSheet("Border: 2px solid #c40e0e;color: #c40e0e; font-size:16px;")
+      self.flash.label.setStyleSheet("Border: 2px solid #c40e0e;")
+      if self.flash.checked == "das":
+        self.flash.das.setCheckable(False)
+        self.flash.das.setEnabled(False)
+        self.flash.das.setStyleSheet(self.stylesheet)
+      elif self.flash.checked == "der":
+        self.flash.der.setCheckable(False)
+        self.flash.der.setEnabled(False)
+        self.flash.der.setStyleSheet(self.stylesheet)
+      elif self.flash.checked == "die":
+        self.flash.die.setEnabled(False)
+        self.flash.die.setCheckable(False)
+        self.flash.die.setStyleSheet(self.stylesheet)
 
   def Database(self):
       self.verbs = []

@@ -7,23 +7,117 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>332</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Language Master - Flash Cards</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../IMG/LOGO.png</normaloff>../IMG/LOGO.png</iconset>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>20</y>
-     <width>271</width>
-     <height>171</height>
+     <x>30</x>
+     <y>10</y>
+     <width>340</width>
+     <height>160</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 2px solid rgb(29, 233, 182);
+</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="das">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>200</y>
+     <width>100</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">text-transform: capitalize;</string>
+   </property>
+   <property name="text">
+    <string>Das</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="die">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>200</y>
+     <width>100</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">text-transform:capitalize;</string>
+   </property>
+   <property name="text">
+    <string>Die</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="der">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>200</y>
+     <width>100</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">text-transform:capitalize;</string>
+   </property>
+   <property name="text">
+    <string>Der</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="input">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>250</y>
+     <width>340</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 2px solid rgb(29, 233, 182);</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="check_BT">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>295</y>
+     <width>100</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">text-transform:capitalize;</string>
+   </property>
+   <property name="text">
+    <string>Check</string>
    </property>
   </widget>
  </widget>

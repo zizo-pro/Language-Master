@@ -14,7 +14,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Language Master</string>
+   <string>Language Master - Dictionary</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../IMG/LOGO.png</normaloff>../IMG/LOGO.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
