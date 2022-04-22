@@ -83,7 +83,7 @@ class mainapp(QMainWindow,FORM_CLASS):
       self.firs.dict_BT.clicked.connect(self.open_dict)
       self.firs.cards_BT.clicked.connect(self.open_flash)
       self.flash.check_BT.clicked.connect(self.check)
-
+      self.flash.surrender_BT.clicked.connect(self.surrender)
   def check_word(self):
     self.comb = self.comboBox.currentText()
     if self.comb in self.all:
@@ -187,6 +187,8 @@ class mainapp(QMainWindow,FORM_CLASS):
     self.add_db_win.add_BT.clicked.connect(self.add_DATA)
 
   def flashgame(self):
+    self.wrong_count = 0
+    self.flash.surrender_BT.hide()
     self.card = randint(0,len(self.nouns)-1)
     self.l = self.nouns[self.card]
     self.card_noun = self.cr.execute(f"SELECT article , img FROM nouns WHERE noun='{self.l}'")
@@ -197,8 +199,9 @@ class mainapp(QMainWindow,FORM_CLASS):
     self.flash.der.setStyleSheet("")
     self.flash.das.setStyleSheet("")
     self.flash.die.setStyleSheet("")
+    self.flash.surrender_BT.setStyleSheet("padding:0px; font-size:11px")
     self.flash.input.setStyleSheet("border: 2px solid rgb(29, 233, 182);font-size:16px;")
-    self.flash.label.setStyleSheet("Border: 2px solid rgb(29, 233, 182); font-size:16px;")
+    self.flash.label.setStyleSheet("border: 2px solid rgb(29, 233, 182);font-size:16px;")
     self.flash.das.setEnabled(True)
     self.flash.das.setCheckable(True)
     self.flash.die.setEnabled(True)
@@ -207,49 +210,65 @@ class mainapp(QMainWindow,FORM_CLASS):
     self.flash.der.setChecked(False)
     self.flash.das.setChecked(False)
     self.flash.die.setChecked(False)
+
   def check(self):
-    self.art = self.level[0].lower()
-    if self.flash.checked == self.art and self.flash.input.text().upper() == self.l.upper():
-      playsound("audio/Correct.mp3")
-      self.flashgame()
-    elif self.flash.checked != self.art and self.flash.input.text().upper() == self.l.upper():
-      playsound("audio/Wrong.mp3")
-      self.stylesheet = "Border: 2px solid #c40e0e;Background-color: #c40e0e;"
-      self.flash.label.setStyleSheet("Border: 2px solid #c40e0e;")
-      if self.flash.checked == "das":
-        self.flash.das.setCheckable(False)
-        self.flash.das.setEnabled(False)
-        self.flash.das.setStyleSheet(self.stylesheet)
-      elif self.flash.checked == "der":
-        self.flash.der.setCheckable(False)
-        self.flash.der.setEnabled(False)
-        self.flash.der.setStyleSheet(self.stylesheet)
-      elif self.flash.checked == "die":
-        self.flash.die.setEnabled(False)
-        self.flash.die.setCheckable(False)
-        self.flash.die.setStyleSheet(self.stylesheet)
-    elif self.flash.checked == self.art and self.flash.input.text().upper() != self.l.upper():
-      playsound("audio/Wrong.mp3")
-      self.stylesheet = "Border: 2px solid #c40e0e;color: #c40e0e;font-size:16px;"
-      self.flash.input.setStyleSheet(self.stylesheet)
-      self.flash.label.setStyleSheet("Border: 2px solid #c40e0e;")
+    if self.wrong_count < 2:
+      self.art = self.level[0].lower()
+      if self.flash.checked == self.art and self.flash.input.text().upper() == self.l.upper():
+        playsound("audio/Correct.mp3")
+        self.flashgame()
+      elif self.flash.checked != self.art and self.flash.input.text().upper() == self.l.upper():
+        playsound("audio/Wrong.mp3")
+        self.stylesheet = "Border: 2px solid #c40e0e;Background-color: #c40e0e;"
+        self.flash.label.setStyleSheet("Border: 2px solid #c40e0e;")
+        self.wrong_count +=1
+        if self.flash.checked == "das":
+          self.flash.das.setCheckable(False)
+          self.flash.das.setEnabled(False)
+          self.flash.das.setStyleSheet(self.stylesheet)
+        elif self.flash.checked == "der":
+          self.flash.der.setCheckable(False)
+          self.flash.der.setEnabled(False)
+          self.flash.der.setStyleSheet(self.stylesheet)
+        elif self.flash.checked == "die":
+          self.flash.die.setEnabled(False)
+          self.flash.die.setCheckable(False)
+          self.flash.die.setStyleSheet(self.stylesheet)
+      elif self.flash.checked == self.art and self.flash.input.text().upper() != self.l.upper():
+        playsound("audio/Wrong.mp3")
+        self.wrong_count +=1
+        self.stylesheet = "Border: 2px solid #c40e0e;color: #c40e0e;font-size:16px;"
+        self.flash.input.setStyleSheet(self.stylesheet)
+        self.flash.label.setStyleSheet("Border: 2px solid #c40e0e;")
+      else:
+        self.wrong_count +=1
+        playsound("audio/Wrong.mp3")
+        self.stylesheet = "Border: 2px solid #c40e0e;Background-color: #c40e0e;"
+        self.flash.input.setStyleSheet("Border: 2px solid #c40e0e;color: #c40e0e; font-size:16px;")
+        self.flash.label.setStyleSheet("Border: 2px solid #c40e0e;")
+        if self.flash.checked == "das":
+          self.flash.das.setCheckable(False)
+          self.flash.das.setEnabled(False)
+          self.flash.das.setStyleSheet(self.stylesheet)
+        elif self.flash.checked == "der":
+          self.flash.der.setCheckable(False)
+          self.flash.der.setEnabled(False)
+          self.flash.der.setStyleSheet(self.stylesheet)
+        elif self.flash.checked == "die":
+          self.flash.die.setEnabled(False)
+          self.flash.die.setCheckable(False)
+          self.flash.die.setStyleSheet(self.stylesheet)
     else:
-      playsound("audio/Wrong.mp3")
-      self.stylesheet = "Border: 2px solid #c40e0e;Background-color: #c40e0e;"
-      self.flash.input.setStyleSheet("Border: 2px solid #c40e0e;color: #c40e0e; font-size:16px;")
-      self.flash.label.setStyleSheet("Border: 2px solid #c40e0e;")
-      if self.flash.checked == "das":
-        self.flash.das.setCheckable(False)
-        self.flash.das.setEnabled(False)
-        self.flash.das.setStyleSheet(self.stylesheet)
-      elif self.flash.checked == "der":
-        self.flash.der.setCheckable(False)
-        self.flash.der.setEnabled(False)
-        self.flash.der.setStyleSheet(self.stylesheet)
-      elif self.flash.checked == "die":
-        self.flash.die.setEnabled(False)
-        self.flash.die.setCheckable(False)
-        self.flash.die.setStyleSheet(self.stylesheet)
+      self.flash.check_BT.hide()
+      self.flash.surrender_BT.show()
+  def surrender(self):
+    self.flash.input.setText("texto")
+    if self.art == "das":
+      self.flash.das.setChecked(True)
+    elif self.art == "der":
+      self.flash.der.setChecked(True)
+    elif self.art == "die":
+      self.flash.die.setChecked(True)
 
   def Database(self):
       self.verbs = []
